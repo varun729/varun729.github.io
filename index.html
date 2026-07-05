@@ -1,1 +1,226 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Varun Agrawal — Computer Architecture Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Serif:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EF;
+    --ink: #17191C;
+    --ink-soft: #4B4F55;
+    --steel: #38617A;
+    --copper: #B5713C;
+    --line: #DBD7CC;
+    --card: #FFFFFF;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+  }
+  ::selection{ background:var(--copper); color:#fff; }
+
+  a{ color:var(--steel); text-decoration:none; border-bottom:1px solid transparent; }
+  a:hover{ border-bottom-color:var(--steel); }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  header.site{
+    position:sticky; top:0; z-index:10;
+    background:rgba(246,244,239,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:920px; margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .nav .brand{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:0.95rem; letter-spacing:0.02em; }
+  .nav ul{ list-style:none; display:flex; gap:22px; margin:0; padding:0; font-size:0.92rem; }
+  .nav a{ color:var(--ink-soft); border-bottom:none; }
+  .nav a:hover{ color:var(--steel); }
+
+  main{ max-width:920px; margin:0 auto; padding:0 24px; }
+
+  .hero{ padding:80px 0 56px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    display:inline-block; font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem; color:var(--steel); letter-spacing:0.08em;
+    border:1px solid var(--line); border-radius:3px;
+    padding:3px 9px; margin-bottom:22px;
+  }
+  h1.name{
+    font-family:'IBM Plex Serif', serif; font-weight:700;
+    font-size:clamp(2.4rem, 6vw, 3.6rem); margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .role{ font-size:1.15rem; color:var(--ink-soft); margin:0 0 28px; max-width:640px; }
+  .thesis{ font-size:1.05rem; max-width:600px; color:var(--ink); }
+  .thesis strong{ color:var(--copper); font-weight:600; }
+
+  .stage{
+    padding:56px 0; border-bottom:1px solid var(--line);
+  }
+  .stage:last-of-type{ border-bottom:none; }
+  .stage-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:22px;
+  }
+  .stage-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    color:#8B8F94; letter-spacing:0.06em; white-space:nowrap;
+  }
+  .stage h2{
+    font-family:'IBM Plex Serif', serif; font-size:1.5rem; margin:0;
+    font-weight:600;
+  }
+  .stage p{ max-width:640px; color:var(--ink-soft); }
+  .stage p.lede{ color:var(--ink); }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+  .chip{
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem;
+    background:var(--card); border:1px solid var(--line);
+    border-radius:4px; padding:7px 12px; color:var(--ink);
+  }
+
+  .role-entry{ margin-top:8px; }
+  .role-entry .r-title{ font-weight:600; }
+  .role-entry .r-meta{ font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--steel); margin-bottom:4px; }
+  .role-entry p{ margin-top:6px; }
+
+  .links-grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap:14px; margin-top:8px;
+  }
+  .link-card{
+    display:block; background:var(--card); border:1px solid var(--line);
+    border-radius:6px; padding:16px 18px; border-bottom:1px solid var(--line);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .link-card:hover{ border-color:var(--steel); transform:translateY(-2px); }
+  .link-card .l-label{ font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:#8B8F94; display:block; margin-bottom:4px; }
+  .link-card .l-name{ font-weight:600; color:var(--ink); }
+
+  footer{
+    padding:36px 24px 60px; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:#8B8F94;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav">
+    <span class="brand mono">varun729</span>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#elsewhere">Elsewhere</a></li>
+      <li><a href="gk3.html">Quizzes</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <span class="eyebrow">0x00 · REGISTER FILE</span>
+    <h1 class="name">Varun Agrawal</h1>
+    <p class="role">Systems Research, AMD Research — CPU Hardware &amp; Software for AI · Bengaluru, India</p>
+    <p class="thesis">I'm a computer architect working on <strong>CPU hardware and software for AI</strong> — and more recently, exploring hardware‑software co-design at AMD.</p>
+  </section>
+
+  <section class="stage" id="about">
+    <div class="stage-head">
+      <span class="stage-tag">FETCH</span>
+      <h2>About</h2>
+    </div>
+    <p class="lede">
+      I'm a computer systems researcher, trained as a computer architect, working primarily on
+      CPU hardware and software technologies for AI. I completed my PhD in Computer Science at
+      Stony Brook University (COMPAS Lab, advised by Prof. Michael Ferdman), and joined AMD Research
+      in Boxborough, MA right after graduating. I moved to India in 2024 and have continued with
+      AMD Research since, where I've also started exploring hardware‑software co-design.
+    </p>
+  </section>
+
+  <section class="stage" id="research">
+    <div class="stage-head">
+      <span class="stage-tag">DECODE</span>
+      <h2>Research focus</h2>
+    </div>
+    <p>Areas I actively work and publish in:</p>
+    <div class="chips">
+      <span class="chip">CPU Hardware for AI</span>
+      <span class="chip">CPU Software Optimization</span>
+      <span class="chip">AI Compilers &amp; Runtimes</span>
+      <span class="chip">Hardware‑Software Co‑Design (new)</span>
+    </div>
+  </section>
+
+  <section class="stage" id="experience">
+    <div class="stage-head">
+      <span class="stage-tag">EXECUTE</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="role-entry">
+      <div class="r-title">Systems Research — AMD Research</div>
+      <div class="r-meta mono">Boxborough, MA → Bengaluru, India (2024–present)</div>
+      <p>CPU hardware and software technologies for AI. More recently, exploring hardware‑software co-design.</p>
+      <p class="mono" style="font-size:0.85rem; color:#8B8F94; margin-top:10px;">10+ patents filed</p>
+    </div>
+
+    <div class="role-entry" style="margin-top:30px;">
+      <div class="r-title">Selected publications</div>
+      <p style="margin-top:10px;">
+        <strong>Parallelization Strategies for DLRM Embedding Bag Operator on AMD CPUs</strong><br>
+        <span class="r-meta mono">IEEE Micro, 2024</span>
+      </p>
+      <p>
+        <strong>A Research Retrospective on AMD's Exascale Computing Journey</strong><br>
+        <span class="r-meta mono">ISCA '23</span>
+      </p>
+      <p>
+        <strong>Massively Parallel Server Processors</strong><br>
+        <span class="r-meta mono">IEEE Computer Architecture Letters, 2019</span>
+      </p>
+      <p>
+        <strong>Architectural Support for Dynamic Linking</strong><br>
+        <span class="r-meta mono">ASPLOS '15</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="stage" id="elsewhere">
+    <div class="stage-head">
+      <span class="stage-tag">WRITEBACK</span>
+      <h2>Elsewhere</h2>
+    </div>
+    <div class="links-grid">
+      <a class="link-card" href="https://www.linkedin.com/in/varun-agrawal-phd" target="_blank" rel="noopener">
+        <span class="l-label mono">PROFILE</span>
+        <span class="l-name">LinkedIn</span>
+      </a>
+      <a class="link-card" href="gk3.html">
+        <span class="l-label mono">SIDE PROJECT</span>
+        <span class="l-name">My India Passport — GK Quiz</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  built &amp; hosted on GitHub Pages · varun729.github.io
+</footer>
+
+</body>
+</html>
